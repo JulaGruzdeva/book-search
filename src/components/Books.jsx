@@ -5,12 +5,24 @@ import styled from "styled-components";
 import books from "../store/books";
 import Card from "./Card";
 
+
+
 const Book = observer(() => {
+    const booksId = []
+    const bookArray = toJS(books.data).filter((item) => {
+        if (booksId.includes(item.id)) {
+            return false
+        } else {
+            booksId.push(item.id)
+            return true
+        }
+    })
+
     return (
         <>
             <NumberResult>Found 446 results</NumberResult>
             <CardBlock>
-                {toJS(books.data).map((item) => <Card key={item.id} cover={item.volumeInfo.imageLinks.smallThumbnail} categoria={item.volumeInfo.categories} title={item.volumeInfo.title} author={item.volumeInfo.authors} />)}
+                {bookArray.map((item) => <Card key={item.id} bookId={item.id} cover={item.volumeInfo.imageLinks.smallThumbnail} categoria={item.volumeInfo.categories} title={item.volumeInfo.title} author={item.volumeInfo.authors} />)}
 
             </CardBlock>
         </>
@@ -25,7 +37,6 @@ const CardBlock = styled.div`
     margin: 0 auto;
     max-width: 90%;
     height: fit-content;
-    border: 1px solid black;
     justify-content: center;
     align-items: center;
 `

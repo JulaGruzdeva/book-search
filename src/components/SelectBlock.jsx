@@ -24,7 +24,7 @@ const SelectBlock = observer(() => {
             <TitleForm>Sorting by</TitleForm>
             <SelectForm defaultValue={'relevance'} onChange={(event) => searchParametrs.setSorting(event.target.value)}>
                 <OptionForm value='relevance'>relevance</OptionForm>
-                <OptionForm>newest</OptionForm>
+                <OptionForm value='newest'>newest</OptionForm>
             </SelectForm>
         </CategoriesForm>
     )

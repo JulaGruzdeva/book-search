@@ -8,6 +8,7 @@ class books {
 
     bookData = (value) => {
         this.data = [...value];
+
     }
 }
 

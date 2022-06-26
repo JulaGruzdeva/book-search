@@ -8,8 +8,7 @@ import searchParametrs from '../store/searchParametrs';
 
 
 async function getBook(value) {
-    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}&orderBy=${searchParametrs.sorting}&key=AIzaSyD3JQMqkbc_r5rvK7dwvS9TFteXCT7SzfY`);
-    // console.log(response.data.items);
+    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}&orderBy=${searchParametrs.sorting}&maxResults=30&key=AIzaSyD3JQMqkbc_r5rvK7dwvS9TFteXCT7SzfY`);
     books.bookData(response.data.items)
     console.log(toJS(books.data));
 }
@@ -27,7 +26,7 @@ const Input = () => {
             </Block>
             <Search>
                 <InputSearch type='text' placeholder="name of the book" onChange={(e) => setInputValue(e.target.value)} />
-                <EnterButton onClick={() => getBook(inputValue)}><img src={search} alt="" style={{ width: 'calc(0.5em + 2vw)', marginRight: 'calc(0.1em + 1vw)' }} /></EnterButton>
+                <EnterButton onClick={() => getBook(inputValue)} ><img src={search} alt="" style={{ width: 'calc(0.5em + 2vw)', marginRight: 'calc(0.1em + 1vw)' }} /></EnterButton>
             </Search>
         </>
     )
@@ -99,4 +98,5 @@ const EnterButton = styled.button`
     border: none;
     background: none;
     cursor: pointer;
+    outline: none;
 `

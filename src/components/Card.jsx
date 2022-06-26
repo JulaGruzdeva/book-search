@@ -1,16 +1,18 @@
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
-// import cover from "../img/cover.png";
 
-
-const Card = ({ cover, categoria, title, author }) => {
+const Card = ({ bookId, cover, categoria, title, author }) => {
     return (
         <>
+            {/* onClick={() => window.location.href = `book/${bookId}`} */}
             <Cards>
-                <BookCover src={cover} alt="book" />
-                <Categories>{(categoria && categoria.length !== 0) ? categoria[0] : 'No categoria'}</Categories>
-                <BookName>{title}</BookName>
-                <BookAuthor>{author ? author.join(', ') : 'Unknown'}</BookAuthor>
+                <Link to={`book/${bookId}`} style={{ textDecoration: "none" }}>
 
+                    <BookCover src={cover} alt="book" />
+                    <Categories>{(categoria && categoria.length !== 0) ? categoria[0] : 'No categoria'}</Categories>
+                    <BookName>{title.split('').slice(0, 43)}...</BookName>
+                    <BookAuthor>{author ? author.join(', ') : 'Unknown'}</BookAuthor>
+                </Link>
             </Cards>
         </>
     )
@@ -25,7 +27,7 @@ const Cards = styled.div`
     max-width: 18%;
     min-width: 200px;
     /* min-height: calc(20em + 2vw); */
-    height: calc(20em + 2vw);
+    height: calc(19em + 2vw);
     margin-bottom:calc(0.5em + 2vw);
 
 
@@ -33,7 +35,7 @@ const Cards = styled.div`
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     margin-right: calc(1em + 1vw);
-
+    text-decoration: none;
 `
 const BookCover = styled.img`
     width: 200px;
@@ -46,7 +48,7 @@ const Categories = styled.p`
  
     /* margin-bottom:calc(0.1em + 1vw); */
 
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 0.9em;
     margin-left: 1em;
@@ -76,6 +78,8 @@ const BookAuthor = styled.p`
     font-weight: 300;
     font-size: 0.9em;
     margin-left: 1em;
+    margin-right: 1em;
+
     color: #636261;
     
 
