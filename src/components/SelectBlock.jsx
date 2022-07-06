@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import searchParametrs from '../store/searchParametrs';
 
 const SelectBlock = observer(() => {
-    // useEffect(() => {
-    //     console.log(books.data);
-
-    // })
 
     return (
         <CategoriesForm target="_top">

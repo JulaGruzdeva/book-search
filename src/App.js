@@ -10,10 +10,8 @@ import SelectBlock from './components/SelectBlock';
 function App() {
   return (
     <>
-
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={
             <>
               <div className="App">
@@ -26,11 +24,9 @@ function App() {
 
           <Route path="book/:id" element={
             <>
-
               <BookDescription />
             </>
           } />
-
 
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { toJS } from 'mobx';
-import { useEffect, useState } from 'react';
+import { observer } from 'mobx-react';
 import styled from 'styled-components';
 import search from '../img/search.svg';
 import books from '../store/books';
@@ -8,29 +7,25 @@ import searchParametrs from '../store/searchParametrs';
 
 
 async function getBook(value) {
-    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}&orderBy=${searchParametrs.sorting}&maxResults=30&key=AIzaSyD3JQMqkbc_r5rvK7dwvS9TFteXCT7SzfY`);
+    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}&orderBy=${searchParametrs.sorting}&key=AIzaSyD3JQMqkbc_r5rvK7dwvS9TFteXCT7SzfY`);
     books.bookData(response.data.items)
-    console.log(toJS(books.data));
+    books.setNumberOfBooks(response.data.totalItems)
 }
 
-const Input = () => {
-    const [inputValue, setInputValue] = useState('')
-    useEffect(() => {
-        console.log(inputValue);
-        console.log(searchParametrs.categoria)
-    })
+const Input = observer(() => {
+
     return (
         <>
             <Block>
                 <Title className='Title'>Search for books</Title>
             </Block>
             <Search>
-                <InputSearch type='text' placeholder="name of the book" onChange={(e) => setInputValue(e.target.value)} />
-                <EnterButton onClick={() => getBook(inputValue)} ><img src={search} alt="" style={{ width: 'calc(0.5em + 2vw)', marginRight: 'calc(0.1em + 1vw)' }} /></EnterButton>
+                <InputSearch type='text' placeholder="name of the book" onChange={(e) => books.getInputValue(e.target.value)} />
+                <EnterButton onClick={() => getBook(books.inputValue)} ><img src={search} alt="" style={{ width: 'calc(0.5em + 2vw)', marginRight: 'calc(0.1em + 1vw)' }} /></EnterButton>
             </Search>
         </>
     )
-}
+})
 
 export default Input;
 
@@ -61,7 +56,6 @@ const Search = styled.div`
 
     background: #F7F9FD;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
-    /* border-radius: 1.5rem; */
     border: none;
     margin-bottom:calc(1em + 0.5vw);
 
@@ -84,7 +78,6 @@ const InputSearch = styled.input`
     
     ::placeholder{
         font-family: 'Roboto';
-        /* font-size: calc(0.3em + 1vw); */
         font-weight: 300;
         color: #adadad;
     }

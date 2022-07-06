@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Card = ({ bookId, cover, categoria, title, author }) => {
     return (
         <>
-            {/* onClick={() => window.location.href = `book/${bookId}`} */}
             <Cards>
                 <Link to={`book/${bookId}`} style={{ textDecoration: "none" }}>
 
@@ -20,16 +19,13 @@ const Card = ({ bookId, cover, categoria, title, author }) => {
 
 export default Card;
 
-
 const Cards = styled.div`
     width: 18%;
     position: relative;
     max-width: 18%;
     min-width: 200px;
-    /* min-height: calc(20em + 2vw); */
     height: calc(19em + 2vw);
     margin-bottom:calc(0.5em + 2vw);
-
 
     background: #F9F9F9;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.35);
@@ -41,19 +37,14 @@ const BookCover = styled.img`
     width: 200px;
     height: 200px;
     object-fit: contain;
-    
-
 `
-const Categories = styled.p`
- 
-    /* margin-bottom:calc(0.1em + 1vw); */
 
+const Categories = styled.p`
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 0.9em;
     margin-left: 1em;
     color: #636261;
-
 `
 const BookName = styled.p`
     height: calc(0.8em + 2vw);
@@ -67,8 +58,6 @@ const BookName = styled.p`
     font-weight: 500;
     font-size: 0.9em;
     color: #3F3F41;
-    
-
 `
 const BookAuthor = styled.p`
     white-space: nowrap;
@@ -79,9 +68,5 @@ const BookAuthor = styled.p`
     font-size: 0.9em;
     margin-left: 1em;
     margin-right: 1em;
-
     color: #636261;
-    
-
-
 `

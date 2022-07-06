@@ -9,9 +9,7 @@ const BookDescription = () => {
     const bookId = useParams().id;
     const book = toJS(books.data).filter(item => item.id === bookId)[0];
     const bookVolumeInfo = book.volumeInfo;
-    // const book = toJS(books).filter(item => item.id === bookId);
-    console.log(bookId);
-    console.log(book);
+
     return (
         <>
             <Container>
@@ -43,16 +41,14 @@ const Container = styled.div`
     height: fit-content;
     
 `
+
 const Cover = styled.img`
-    /* margin-right: 2em; */
     height: calc(10em + 10vw);
     border: 1px solid blacks;
 `
 
 const DescriptionBlock = styled.div`
-   
     width: 60%;
-    
 `
 
 const CategoriaAuthor = styled.p`
@@ -62,6 +58,7 @@ const CategoriaAuthor = styled.p`
     margin-left: 1em;
     color: #636261;
 `
+
 const Description = styled.p`
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
