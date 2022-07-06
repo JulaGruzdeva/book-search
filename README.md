@@ -1,9 +1,13 @@
-#Book search project with Google Books API
-##Skills:
+Book search project with Google Books API https://book-search-eight.vercel.app/
+
+Skills:
 
 *React
+
 *MobX
+
 *React Router
+
 *Rest API
 
 Description:
